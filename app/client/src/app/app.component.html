@@ -1,0 +1,3 @@
+<ul *ngFor="let person of people$ | async">
+  <li>{{ person.firstName }} {{ person.lastName }} ({{ person.id }})</li>
+</ul>

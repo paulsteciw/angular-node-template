@@ -1,0 +1,18 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server-watch": "npm --prefix server run dev",
+    "client-watch": "npm --prefix client run dev",
+    "dev": "concurrently npm:*-watch",
+    "docker": "docker build -t angular-node . && docker rm -f angular-node && docker run -it -p 3000:3000 --name angular-node angular-node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
