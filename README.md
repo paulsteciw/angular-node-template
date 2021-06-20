@@ -4,11 +4,16 @@
 > This is a template for creating an Angular application with a single Node.js Express API using TypeScript. The finished build generates a Node.js server serving the Angular application at the root and all endpoints at the ```/api/*``` route. Using TypeScript in the API allows the use of shared DTO models between server and client. The development environment is configured with concurrent server/client hot reload using ```nodemon```. The root package.json configures the dev environment and allows you to build the container locally using npm scripts eliminating the need for shell scripts and providing easy CI/CD integration.
 
 ## Usage
-To start the development server on [http://localhost:4200](http://localhost:4200), run this command from the project root:
+The following three commands can be run from inside the ```/app``` directory:  
+This project includes three packages, so to install dependencies in all three run:
+```bash
+npm run i
+```
+To start the development server on [http://localhost:4200](http://localhost:4200) run:
 ```bash
 npm run dev
 ```
-To build and start the docker container on [http://localhost:3000](http://localhost:3000), run this command from the project root:
+To build and start the docker container on [http://localhost:3000](http://localhost:3000) run:
 ```bash
 npm run docker
 ```
@@ -186,6 +191,7 @@ npm i --save-dev concurrently
   "scripts": {
     "server-watch": "npm --prefix server run dev",
     "client-watch": "npm --prefix client run dev",
+    "i": "npm i && npm --prefix server i && npm --prefix client i",
     "dev": "concurrently npm:*-watch",
     "docker": "docker build -t angular-node . && docker rm -f angular-node && docker run -it -p 3000:3000 --name angular-node angular-node"
   },
@@ -221,6 +227,7 @@ You end up with three packages; server, client and app, which contains both. The
   "scripts": {
     "server-watch": "npm --prefix server run dev",
     "client-watch": "npm --prefix client run dev",
+    "i": "npm i && npm --prefix server i && npm --prefix client i",
     "dev": "concurrently npm:*-watch",
     "docker": "docker build -t angular-node . && docker rm -f angular-node && docker run -it -p 3000:3000 --name angular-node angular-node"
   },
@@ -229,7 +236,7 @@ You end up with three packages; server, client and app, which contains both. The
   }
 }
 ```
-The ```/app/package.json``` has one dev dependency, ```concurrently```, which allows you to run the ```client-watch``` and ```server-watch``` scripts at the same time in one console. This is just for convenience. The ```server-watch``` and ```client-watch``` scripts call npm scripts in the ```app/server``` and ```app/client``` packages respectively using the ```--prefix``` flag to call outside of the working directory. So when you run ```npm run dev``` it launches the development environment which includes the server and client, both with hot reload. The ```docker``` script just builds the container locally so you can see it working. A build server or deploy script will be able to us the same docker file.
+The ```/app/package.json``` has one dev dependency, ```concurrently```, which allows you to run the ```client-watch``` and ```server-watch``` scripts at the same time in one console. This is just for convenience. The ```server-watch``` and ```client-watch``` scripts call npm scripts in the ```app/server``` and ```app/client``` packages respectively using the ```--prefix``` flag to call outside of the working directory. So when you run ```npm run dev``` it launches the development environment which includes the server and client, both with hot reload. You'll notice you can also run ```npm run i``` to install all dependencies using the same method. The ```docker``` script just builds the container locally so you can see it working. A build server or deploy script will be able to us the same docker file.
 ## Configuring the development environment
 
 ## 1. The client
