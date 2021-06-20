@@ -355,4 +355,4 @@ Since the build uses pure Docker, it's an easy task for any build server.
 - [Configureing Nodemon on the server](https://samuelsson.dev/make-a-TypeScript-node-server-hot-reload-on-changes-with-nodemon/)
 - [Setting up Express with TypeScript](https://ultimatecourses.com/blog/setup-TypeScript-nodejs-express)
 - [Setting up Dev server proxy](https://www.positronx.io/setting-up-angular-proxy-configuration-via-angular-json/)
-- [Bundling node app with webpack](hhttps://jhol.medium.com/bundling-your-js-TypeScript-node-js-modules-code-withwebpack-f99e082ae10b)
+- [Bundling node app with webpack](https://jhol.medium.com/bundling-your-js-TypeScript-node-js-modules-code-withwebpack-f99e082ae10b)
