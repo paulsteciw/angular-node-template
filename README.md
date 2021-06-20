@@ -254,10 +254,6 @@ Here, we have three goals:
 First, here are the dependencies that need to be installed to make this happen. Note that the TypeScript dependencies are install as dev, because TypeScript gets compiled out:
 ```json
 {
-    .
-    .
-    .
-
   "dependencies": {
     "express": "^4.17.1",            <-- the server library
     "body-parser": "^1.19.0",        <-- for request handling
@@ -303,7 +299,7 @@ With ```nodemon``` installed and the configuration file in place, we can just ru
 
 So, we add ```"dev": "nodemon"``` to our scripts to start the live server. This is what our root ```package.json``` calls ```server-watch```.
 
-Finally, for bundling with need to add ```webpack.config.js``` to the root of the server package. Note the entrypoint targets a ```.js``` file not ```.ts``` since we will call ```npx tsc``` to compile TypeScript to JavaScript prior to bundling. The ```.tsconfig.json``` file specified that the output directory be ```/build```, so that's what is referenced here as the entrypoint for Webpack to create the bundle:
+Finally, for bundling we'll need to add ```webpack.config.js``` to the root of the server package. Note the entrypoint targets a ```.js``` file not ```.ts``` since we will call ```npx tsc``` to compile TypeScript to JavaScript prior to bundling. The ```.tsconfig.json``` file specified that the output directory be ```/build```, so that's what is referenced here as the entrypoint for Webpack to create the bundle:
 ```js
 const path = require('path')
 
