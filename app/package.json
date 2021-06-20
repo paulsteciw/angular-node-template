@@ -6,6 +6,7 @@
   "scripts": {
     "server-watch": "npm --prefix server run dev",
     "client-watch": "npm --prefix client run dev",
+    "i": "npm i && npm --prefix server i && npm --prefix client i",
     "dev": "concurrently npm:*-watch",
     "docker": "docker build -t angular-node . && docker rm -f angular-node && docker run -it -p 3000:3000 --name angular-node angular-node"
   },
