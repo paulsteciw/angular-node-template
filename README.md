@@ -24,10 +24,9 @@ npm run docker
 ```bash
 npm i -g @angular/cli
 ```
-4. Create a project directory. I'll call it ```/app```.
-5. From inside ```/app```, run ```ng new client``` to generate the client app. Configure the settings any way you like.
-6. To avoid nested git repos you may want to delete the ```/app/client/.git``` directory and initialize a new repo at ```/app```.
-7. Add ```/app/client/proxy.conf.json```:
+3. Create a project directory. I'll call it ```/app```.
+4. From inside ```/app```, run ```ng new client``` to generate the client app. Configure the settings any way you like.
+5. Add ```/app/client/proxy.conf.json```:
 ```json
 {
   "/api/*": {
@@ -36,7 +35,7 @@ npm i -g @angular/cli
   }
 }
 ```
-4. Add the ```dev``` script to ```/app/client/package.json```:
+6. Add the ```dev``` script to ```/app/client/package.json```:
 ```json
   "scripts": {
     "ng": "ng",
@@ -47,17 +46,17 @@ npm i -g @angular/cli
     "test": "ng test"
   },
 ```
-5. Create a directory for the server in the root directory. I'll call it ```/app/server```.
-6. From inside ```/app/server``` run:
+7. Create a directory for the server in the root directory. I'll call it ```/app/server```.
+8. From inside ```/app/server``` run:
 ```
 npm init -y
 ```
-7. Install dependencies by running: 
+9. Install dependencies by running: 
 ```bash
 npm i --save express body-parser helmet
 npm i --save-dev ts-node typescript webpack webpack-cli nodemon @types/body-parser @types/express @types/node
 ```
-8. Add ```/app/server/tsconfig.json```:
+10. Add ```/app/server/tsconfig.json```:
 ```json
 {
   "compilerOptions": {
@@ -70,7 +69,7 @@ npm i --save-dev ts-node typescript webpack webpack-cli nodemon @types/body-pars
   "include": ["src"]
 }
 ```
-9. Add ```/app/server/nodemon.json```:
+11. Add ```/app/server/nodemon.json```:
 ```json
 {
   "ignore": ["**/*.test.ts", "**/*.spec.ts", "node_modules"],
@@ -79,7 +78,7 @@ npm i --save-dev ts-node typescript webpack webpack-cli nodemon @types/body-pars
   "ext": "ts"
 }
 ```
-10. Add ```/app/server/webpack.config.js```:
+12. Add ```/app/server/webpack.config.js```:
 ```js
 const path = require('path')
 
@@ -96,7 +95,7 @@ module.exports = {
 }
 
 ```
-11. Add the following three scripts to ```/app/server/package.json```:
+13. Add the following three scripts to ```/app/server/package.json```:
 ```json
   "scripts": {
     "dev": "nodemon",
@@ -104,7 +103,7 @@ module.exports = {
     "build": "npx tsc && webpack"
   },
 ```
-12. Create the ```/app/dtos``` directory and add a sample shared model at ```/app/dtos/person.ts```:
+14. Create the ```/app/dtos``` directory and add a sample shared model at ```/app/dtos/person.ts```:
 ```typescript
 export interface PersonProperties {
   lastName: string
@@ -114,7 +113,7 @@ export interface Person extends PersonProperties {
   id: string
 }
 ```
-13. Create the server index file at ```/app/server/src/index.ts```:
+15. Create the server index file at ```/app/server/src/index.ts```:
 ```typescript
 import express from 'express'
 import { Person } from '../../dtos/person'
@@ -144,7 +143,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`)
 })
 ```
-14. In the Angular client, add a sample call to the server in three steps:  
+16. In the Angular client, add a sample call to the server in three steps:  
 - Import the http client in ```app/client/src/app/app.module.ts```:
 - Add the API call to ```app/client/src/app/app.component.ts```:
 - Display results in ```app/client/src/app/app.component.html```:
@@ -184,15 +183,15 @@ export class AppComponent {
   <li>{{ person.firstName }} {{ person.lastName }} ({{ person.id }})</li>
 </ul>
 ```
-15. From the ```/app``` directory run:
+17. From the ```/app``` directory run:
 ```bash
 npm init -y
 ```
-16. Install ```concurrently``` with:
+18. Install ```concurrently``` with:
 ```bash
 npm i --save-dev concurrently
 ```
-17. Add the scripts to ```app/package.json```:
+19. Add the scripts to ```app/package.json```:
 ```json
   "scripts": {
     "server-watch": "npm --prefix server run dev",
@@ -202,7 +201,7 @@ npm i --save-dev concurrently
     "docker": "docker build -t angular-node . && docker rm -f angular-node && docker run -it -p 3000:3000 --name angular-node angular-node"
   },
 ```
-18. Add ```/app/dockerfile```. Update with newer versions if needed:
+20. Add ```/app/dockerfile```. Update with newer versions if needed:
 ```dockerfile
 FROM node:16-alpine AS client-build
 RUN npm install -g @angular/cli@^12.0.4
