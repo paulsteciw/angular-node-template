@@ -19,9 +19,14 @@ npm run docker
 ```
 
 ## Step by step setup
-1. Create a project directory. I'll call it ```/app```.
-2. From inside ```/app```, run ```ng new client``` to generate the client app. Configure the settings any way you like.
-3. Add ```/app/client/proxy.conf.json```:
+1. Make sure you have an up-to-date version of [Node.js](https://nodejs.org/en/) installed.
+2. If you don't already have it, install the Angular CLI with:
+```bash
+npm i -g @angular/cli
+```
+4. Create a project directory. I'll call it ```/app```.
+5. From inside ```/app```, run ```ng new client``` to generate the client app. Configure the settings any way you like.
+6. Add ```/app/client/proxy.conf.json```:
 ```json
 {
   "/api/*": {
