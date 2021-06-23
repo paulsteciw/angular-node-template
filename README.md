@@ -26,7 +26,8 @@ npm i -g @angular/cli
 ```
 4. Create a project directory. I'll call it ```/app```.
 5. From inside ```/app```, run ```ng new client``` to generate the client app. Configure the settings any way you like.
-6. Add ```/app/client/proxy.conf.json```:
+6. To avoid nested git repos you may want to delete the ```/app/client/.git``` directory and initialize a new repo at ```/app```.
+7. Add ```/app/client/proxy.conf.json```:
 ```json
 {
   "/api/*": {
