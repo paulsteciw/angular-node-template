@@ -3,6 +3,11 @@
 ## Summary
 > This is a template for creating an Angular application with a single Node.js Express API using TypeScript. The finished build generates a Node.js server serving the Angular application at the root and all endpoints at the ```/api/*``` route. Using TypeScript in the API allows the use of shared DTO models between server and client. The development environment is configured with concurrent server/client hot reload using ```nodemon```. The root package.json configures the dev environment and allows you to build the container locally using npm scripts eliminating the need for shell scripts and providing easy CI/CD integration.
 
+## Contents
+- [Usage](#usage)
+- [Step by step setup](#step-by-step-setup)
+- [How it works](#how-it-works)
+
 ## Usage
 The following three commands can be run from inside the ```/app``` directory:  
 This project includes three packages, so to install dependencies in all three run:
